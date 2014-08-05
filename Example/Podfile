@@ -1,0 +1,10 @@
+target 'KikAPI', :exclusive => true do
+  pod "KikAPI", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "KikAPI", :path => "../"
+
+  pod 'Specta', '~> 0.2.1'
+  pod 'Expecta'
+end
