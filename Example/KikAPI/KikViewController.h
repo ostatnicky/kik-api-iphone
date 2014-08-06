@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface KikViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
+@property (weak, nonatomic) IBOutlet UIButton *articleMessageButton;
+@property (weak, nonatomic) IBOutlet UIButton *photoMessageButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
+- (IBAction)profileButtonTouched:(id)sender;
 
 @end

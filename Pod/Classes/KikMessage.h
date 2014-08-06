@@ -37,7 +37,8 @@ typedef enum {
 
 + (KikMessage *)articleMessageWithTitle:(NSString *)title
                                    text:(NSString *)text
-                             contentURL:(NSString *)contentURL;
+                             contentURL:(NSString *)contentURL
+                             previewURL:(NSString *)previewURL;
 
 + (KikMessage *)photoMessageWithImageURL:(NSString *)imageURL
                               previewURL:(NSString *)previewURL;

@@ -15,7 +15,8 @@
 
 - (id)initWithTitle:(NSString *)title
                text:(NSString *)text
-         contentURL:(NSString *)contentURL;
+         contentURL:(NSString *)contentURL
+         previewURL:(NSString *)previewURL;
 
 - (id)initWithImageURL:(NSString *)imageURL
             previewURL:(NSString *)previewURL;
@@ -32,10 +33,12 @@
 + (KikMessage *)articleMessageWithTitle:(NSString *)title
                                    text:(NSString *)text
                              contentURL:(NSString *)contentURL
+                             previewURL:(NSString *)previewURL
 {
     return [[KikMessage alloc] initWithTitle:title
                                         text:text
-                                  contentURL:contentURL];
+                                  contentURL:contentURL
+                                  previewURL:previewURL];
 }
 
 + (KikMessage *)photoMessageWithImageURL:(NSString *)imageURL
@@ -93,8 +96,13 @@
 - (id)initWithTitle:(NSString *)title
                text:(NSString *)text
          contentURL:(NSString *)contentURL
+         previewURL:(NSString *)previewURL
 {
     if (![NSURL URLWithString:contentURL]) {
+        return nil;
+    }
+    
+    if (contentURL.length && ![NSURL URLWithString:previewURL]) {
         return nil;
     }
     
@@ -106,6 +114,7 @@
         _type = KikMessageTypeArticle;
         _title = title;
         _text = text;
+        _previewURL = previewURL;
         _URLs = [NSMutableArray arrayWithObject:@{@"value": contentURL}];
     }
     
@@ -240,8 +249,11 @@
             return nil;
         }
         
-        NSData *encodedIconData = [iconData base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
-        NSString *base64 = [NSString stringWithUTF8String:[encodedIconData bytes]];
+        // We use the deprecated base64Encoding method here because we support iOS6+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        NSString *base64 = [iconData base64Encoding];
+#pragma clang diagnostic pop
         
         _iconURL = [NSString stringWithFormat:@"data:image/png;base64,%@", base64];
     }

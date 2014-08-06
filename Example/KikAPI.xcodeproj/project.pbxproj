@@ -15,7 +15,6 @@
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* KikAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* KikAppDelegate.m */; };
 		6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F59F195388D20070C39A /* Main_iPhone.storyboard */; };
-		6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A2195388D20070C39A /* Main_iPad.storyboard */; };
 		6003F5A7195388D20070C39A /* KikViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* KikViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
@@ -24,6 +23,13 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* KikMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* KikMessageTests.m */; };
 		646D3415E663427D8C9EA390 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE5CE931C7D43BDBCEAC281 /* libPods-Tests.a */; };
+		92F5335C1992C69700F0CAF9 /* registration_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F533581992C69600F0CAF9 /* registration_bg.png */; };
+		92F5335D1992C69700F0CAF9 /* registration_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F533591992C69600F0CAF9 /* registration_bg@2x.png */; };
+		92F5335E1992C69700F0CAF9 /* registration_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F5335A1992C69600F0CAF9 /* registration_logo.png */; };
+		92F5335F1992C69700F0CAF9 /* registration_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */; };
+		92F533621992CA1E00F0CAF9 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533611992CA1E00F0CAF9 /* ArticleViewController.m */; };
+		92F533651992CA3200F0CAF9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533641992CA3200F0CAF9 /* PhotoViewController.m */; };
+		92F533681992EA7B00F0CAF9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +56,6 @@
 		6003F59C195388D20070C39A /* KikAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* KikAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KikAppDelegate.m; sourceTree = "<group>"; };
 		6003F5A0195388D20070C39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		6003F5A3195388D20070C39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		6003F5A5195388D20070C39A /* KikViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* KikViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KikViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -60,6 +65,15 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* KikMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KikMessageTests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		92F533581992C69600F0CAF9 /* registration_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = registration_bg.png; path = Resources/registration_bg.png; sourceTree = "<group>"; };
+		92F533591992C69600F0CAF9 /* registration_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "registration_bg@2x.png"; path = "Resources/registration_bg@2x.png"; sourceTree = "<group>"; };
+		92F5335A1992C69600F0CAF9 /* registration_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = registration_logo.png; path = Resources/registration_logo.png; sourceTree = "<group>"; };
+		92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "registration_logo@2x.png"; path = "Resources/registration_logo@2x.png"; sourceTree = "<group>"; };
+		92F533601992CA1E00F0CAF9 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		92F533611992CA1E00F0CAF9 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		92F533631992CA3200F0CAF9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		92F533641992CA3200F0CAF9 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A8CD0DC49026472FBC34CAC9 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
 		C9B90516AFC04D6BB75C70D2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		EEE5CE931C7D43BDBCEAC281 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F533681992EA7B00F0CAF9 /* MobileCoreServices.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -118,6 +133,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -131,13 +147,17 @@
 		6003F593195388D20070C39A /* KikAPI */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5A8195388D20070C39A /* Images.xcassets */,
+				92F533601992CA1E00F0CAF9 /* ArticleViewController.h */,
+				92F533611992CA1E00F0CAF9 /* ArticleViewController.m */,
 				6003F59C195388D20070C39A /* KikAppDelegate.h */,
 				6003F59D195388D20070C39A /* KikAppDelegate.m */,
 				6003F5A5195388D20070C39A /* KikViewController.h */,
 				6003F5A6195388D20070C39A /* KikViewController.m */,
-				6003F5A2195388D20070C39A /* Main_iPad.storyboard */,
+				92F533631992CA3200F0CAF9 /* PhotoViewController.h */,
+				92F533641992CA3200F0CAF9 /* PhotoViewController.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+				92F533571992C5F600F0CAF9 /* Resources */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			path = KikAPI;
@@ -181,6 +201,17 @@
 				5A29DD90DE1A41379C46F01B /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		92F533571992C5F600F0CAF9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92F533581992C69600F0CAF9 /* registration_bg.png */,
+				92F533591992C69600F0CAF9 /* registration_bg@2x.png */,
+				92F5335A1992C69600F0CAF9 /* registration_logo.png */,
+				92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +295,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
+				92F5335F1992C69700F0CAF9 /* registration_logo@2x.png in Resources */,
+				92F5335C1992C69700F0CAF9 /* registration_bg.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
+				92F5335D1992C69700F0CAF9 /* registration_bg@2x.png in Resources */,
+				92F5335E1992C69700F0CAF9 /* registration_logo.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,8 +384,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* KikAppDelegate.m in Sources */,
+				92F533621992CA1E00F0CAF9 /* ArticleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* KikViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				92F533651992CA3200F0CAF9 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,14 +424,6 @@
 				6003F5A0195388D20070C39A /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		6003F5A2195388D20070C39A /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6003F5A3195388D20070C39A /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
@@ -491,6 +519,7 @@
 				GCC_PREFIX_HEADER = "KikAPI/KikAPI-Prefix.pch";
 				INFOPLIST_FILE = "KikAPI/KikAPI-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -505,6 +534,7 @@
 				GCC_PREFIX_HEADER = "KikAPI/KikAPI-Prefix.pch";
 				INFOPLIST_FILE = "KikAPI/KikAPI-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
