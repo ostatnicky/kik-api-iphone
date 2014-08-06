@@ -88,17 +88,6 @@
     [_URLs addObject:uri];
 }
 
-- (void)send
-{
-    NSString *link = [self linkRepresentation];
-    NSURL *url = [NSURL URLWithString:link];
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        
-    } else {
-        
-    }
-}
-
 #pragma mark - Private Methods
 
 - (id)initWithTitle:(NSString *)title
@@ -145,30 +134,30 @@
 {
     NSString *link = KIK_MESSENGER_API_SEND_URL;
     
-    if (_type == KikMessageTypeArticle) {
+    if (self.type == KikMessageTypeArticle) {
         link = [link stringByAppendingString:@"article?"];
     } else {
         link = [link stringByAppendingString:@"photo?"];
     }
     
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"app_name=%@",_appName]];
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"&app_pkg=%@",_appPackage]];
+    link = [link stringByAppendingString:[NSString stringWithFormat:@"app_name=%@", [self.appName urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    link = [link stringByAppendingString:[NSString stringWithFormat:@"&app_pkg=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     
-    if (_title.length) {
-        link = [link stringByAppendingString:[NSString stringWithFormat:@"&title=%@",_title]];
+    if (self.title.length) {
+        link = [link stringByAppendingString:[NSString stringWithFormat:@"&title=%@", [self.title urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
-    if (_text.length) {
-        link = [link stringByAppendingString:[NSString stringWithFormat:@"&text=%@",_text]];
+    if (self.text.length) {
+        link = [link stringByAppendingString:[NSString stringWithFormat:@"&text=%@", [self.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
-    if (_forwardable) {
+    if (self.forwardable) {
         link = [link stringByAppendingString:@"&forwardable=1"];
     } else {
         link = [link stringByAppendingString:@"&forwardable=0"];
     }
     
-    for (NSDictionary *uri in _URLs) {
+    for (NSDictionary *uri in self.URLs) {
         NSString *platform = uri[@"platform"];
         NSString *value = [uri[@"value"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
         
@@ -179,21 +168,21 @@
         }
     }
     
-    if (_imageURL.length) {
-        if ([_imageURL hasPrefix:@"data:"]) {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&image_url=%@", _imageURL]];
+    if (self.imageURL.length) {
+        if ([self.imageURL hasPrefix:@"data:"]) {
+            link = [link stringByAppendingString:[NSString stringWithFormat:@"&image_url=%@", self.imageURL]];
         } else {
             link = [link stringByAppendingString:[NSString stringWithFormat:@"&image_url=%@",
-                                                  [_imageURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+                                                  [self.imageURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
         }
     }
     
-    if (_previewURL.length) {
-        if ([_previewURL hasPrefix:@"data:"]) {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&preview_url=%@", _previewURL]];
+    if (self.previewURL.length) {
+        if ([self.previewURL hasPrefix:@"data:"]) {
+            link = [link stringByAppendingString:[NSString stringWithFormat:@"&preview_url=%@", self.previewURL]];
         } else {
             link = [link stringByAppendingString:[NSString stringWithFormat:@"&preview_url=%@",
-                                                  [_previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+                                                  [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
         }
     }
     
@@ -201,7 +190,7 @@
     
     link = [link stringByAppendingString:@"&native=1"];
     
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"&referer=%@", _appPackage]];
+    link = [link stringByAppendingString:[NSString stringWithFormat:@"&referer=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     
     return link;
 }
@@ -209,9 +198,7 @@
 - (NSString *)appName
 {
     if (!_appName) {
-        NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-        NSString *appName = [[NSFileManager defaultManager] displayNameAtPath:bundlePath];
-        _appName = appName;
+        _appName = [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
     }
     
     return _appName;

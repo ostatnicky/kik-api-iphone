@@ -45,9 +45,6 @@ typedef enum {
 - (void)addFallbackURL:(NSString *)fallbackURL
            forPlatform:(KikMessagePlatform)platform;
 
-
-- (void)send;
-
 - (NSString *)linkRepresentation;
 
 @end
