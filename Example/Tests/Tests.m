@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Anthony Wong. All rights reserved.
 //
 
+#import <KikAPI/KikMessage.h>
+
 SpecBegin(InitialSpecs)
 
 describe(@"these will fail", ^{
