@@ -48,4 +48,6 @@ typedef enum {
 
 - (void)send;
 
+- (NSString *)linkRepresentation;
+
 @end

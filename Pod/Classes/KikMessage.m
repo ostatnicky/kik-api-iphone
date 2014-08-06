@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Kik Interactive. All rights reserved.
 //
 
+#define KIK_MESSENGER_API_SEND_URL      @"kik-share://kik.com/send/"
 #import <UIKit/UIKit.h>
 #import "KikMessage.h"
 #import "NSString+URLEncoding.h"
@@ -89,7 +90,13 @@
 
 - (void)send
 {
-    
+    NSString *link = [self linkRepresentation];
+    NSURL *url = [NSURL URLWithString:link];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        
+    } else {
+        
+    }
 }
 
 #pragma mark - Private Methods
@@ -136,7 +143,7 @@
 
 - (NSString *)linkRepresentation
 {
-    NSString *link = @"kik-share://kik.com/send/";
+    NSString *link = KIK_MESSENGER_API_SEND_URL;
     
     if (_type == KikMessageTypeArticle) {
         link = [link stringByAppendingString:@"article?"];
@@ -225,7 +232,7 @@
         // Try to find the icon from the bundles
         UIImage *appIcon = [UIImage imageNamed:[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIconFiles"] objectAtIndex:0]];
         
-        // Maybe stored .xcasset style?
+        // Maybe stored in .xcasset style?
         if (!appIcon) {
             appIcon = [UIImage imageNamed: [[[[[[NSBundle mainBundle] infoDictionary]
                                                objectForKey:@"CFBundleIcons"]
@@ -241,6 +248,11 @@
         
         // Convert to base64
         NSData *iconData = UIImagePNGRepresentation(appIcon);
+        
+        if (!iconData) {
+            return nil;
+        }
+        
         NSData *encodedIconData = [iconData base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
         NSString *base64 = [NSString stringWithUTF8String:[encodedIconData bytes]];
         

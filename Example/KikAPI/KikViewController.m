@@ -7,6 +7,7 @@
 //
 
 #import "KikViewController.h"
+#import <KikAPI/KikMessage.h>
 
 @interface KikViewController ()
 
