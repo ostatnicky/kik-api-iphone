@@ -159,11 +159,6 @@
     UIImage *previewImage = [image resizedImageByMagick:@"400x400"];
     UIImage *contentImage = [image resizedImageByMagick:@"960x960"];
     
-    NSLog(@"****** previewImage PNG size: %d", [UIImagePNGRepresentation(previewImage) length]);
-    NSLog(@"****** previewImage JPG size: %d", [UIImageJPEGRepresentation(previewImage, 0.6) length]);
-    NSLog(@"****** contentImage PNG size: %d", [UIImagePNGRepresentation(contentImage) length]);
-    NSLog(@"****** contentImage JPG size: %d", [UIImageJPEGRepresentation(contentImage, 0.6) length]);
-    
     self = [self initWithImageURL:[contentImage base64URI]
                        previewURL:[previewImage base64URI]];
     
