@@ -6,10 +6,14 @@
 //  Copyright (c) 2014 Kik Interactive. All rights reserved.
 //
 
-#define KIK_MESSENGER_API_SEND_URL      @"kik-share://kik.com/send/"
+#define KIK_MESSENGER_API_SEND_URL          @"kik-share://kik.com/send/"
+#define KIK_MESSENGER_API_PREVIEW_WIDTH     400
+#define KIK_MESSENGER_API_MAXIMUM_EDGE_LENGTH 960
 #import <UIKit/UIKit.h>
 #import "KikMessage.h"
 #import "NSString+URLEncoding.h"
+#import "UIImage+ResizeMagick.h"
+#import "UIImage+Base64URI.h"
 
 @interface KikMessage ()
 
@@ -48,6 +52,11 @@
 {
     return [[KikMessage alloc] initWithImageURL:imageURL
                                      previewURL:previewURL];
+}
+
++ (KikMessage *)photoMessageWithImage:(UIImage *)image
+{
+    return [[KikMessage alloc] initWithImage:image];
 }
 
 - (void)addFallbackURL:(NSString *)fallbackURL
@@ -147,9 +156,18 @@
         return nil;
     }
     
-    if (self = [super init]) {
-        
-    }
+    UIImage *previewImage = [image resizedImageByMagick:@"400x400"];
+    UIImage *contentImage = [image resizedImageByMagick:@"960x960"];
+    
+    NSLog(@"****** previewImage PNG size: %d", [UIImagePNGRepresentation(previewImage) length]);
+    NSLog(@"****** previewImage JPG size: %d", [UIImageJPEGRepresentation(previewImage, 0.6) length]);
+    NSLog(@"****** contentImage PNG size: %d", [UIImagePNGRepresentation(contentImage) length]);
+    NSLog(@"****** contentImage JPG size: %d", [UIImageJPEGRepresentation(contentImage, 0.6) length]);
+    
+    self = [self initWithImageURL:[contentImage base64URI]
+                       previewURL:[previewImage base64URI]];
+    
+    return self;
 }
 
 - (NSString *)linkRepresentation
@@ -255,20 +273,11 @@
             appIcon = [UIImage imageNamed:@"app_store_icon"];
         }
         
-        // Convert to base64
-        NSData *iconData = UIImagePNGRepresentation(appIcon);
         
-        if (!iconData) {
-            return nil;
-        }
+        appIcon = [appIcon resizedImageByMagick:@"32x32"];
         
-        // We use the deprecated base64Encoding method here because we support iOS6+
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        NSString *base64 = [iconData base64Encoding];
-#pragma clang diagnostic pop
-        
-        _iconURL = [NSString stringWithFormat:@"data:image/png;base64,%@", base64];
+        _iconURL = [appIcon base64URI];
+
     }
     
     return _iconURL;

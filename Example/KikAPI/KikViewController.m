@@ -86,6 +86,11 @@
     [alertView show];
 }
 
+- (IBAction)backButtonTouched:(id)sender
+{
+    [[KikClient sharedInstance] backToKik];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != [alertView cancelButtonIndex]) {

@@ -1,0 +1,1 @@
+PODS_TESTS_KIKAPI_OTHER_LDFLAGS = -framework CoreGraphics -framework MobileCoreServices -framework StoreKit -framework UIKit

@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 - (IBAction)profileButtonTouched:(id)sender;
+- (IBAction)backButtonTouched:(id)sender;
 
 @end

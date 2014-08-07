@@ -1,5 +1,5 @@
 #include "Pods-KikAPI-KikAPI.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/KikAPI" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/KikAPI" "${PODS_ROOT}/Headers/Specta"
-OTHER_LDFLAGS = -ObjC
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/KikAPI" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/KikAPI" "${PODS_ROOT}/Headers/Specta" "${PODS_ROOT}/Headers/UIImage-ResizeMagick"
+OTHER_LDFLAGS = -ObjC ${PODS_KIKAPI_KIKAPI_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}

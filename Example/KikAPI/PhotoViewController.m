@@ -8,6 +8,8 @@
 
 #import "PhotoViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <KikAPI/KikAPI.h>
+
 @interface PhotoViewController () < UIImagePickerControllerDelegate,
                                     UINavigationControllerDelegate,
                                     UITextFieldDelegate,
@@ -48,7 +50,20 @@
 
 - (IBAction)sendButtonTouched:(id)sender
 {
+    KikMessage *messageToSend;
+    if (self.imageToSend) {
+        messageToSend = [KikMessage photoMessageWithImage:self.imageToSend];
+    } else {
+        if (self.imageURLField.text.length && self.previewURLField.text.length) {
+            messageToSend = [KikMessage photoMessageWithImageURL:self.imageURLField.text
+                                                      previewURL:self.previewURLField.text];
+
+        }
+    }
     
+    if (messageToSend) {
+        [[KikClient sharedInstance] sendKikMessage:messageToSend];
+    }
 }
 
 #pragma mark - Actionsheet Delegate
@@ -65,6 +80,8 @@
                                             usingDelegate:self];
             return;
         }
+    } else {
+        self.imageToSend = nil;
     }
 }
 
@@ -137,9 +154,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }
         
         self.imageToSend = imageToSave;
-        
-        self.imageURLField.enabled = NO;
-        self.previewURLField.enabled = NO;
         
         [self.pictureImageView setImage:self.imageToSend];
     }

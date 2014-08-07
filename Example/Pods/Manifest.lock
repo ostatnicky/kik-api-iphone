@@ -1,7 +1,9 @@
 PODS:
   - Expecta (0.3.1)
-  - KikAPI (0.1.0)
+  - KikAPI (0.1.0):
+    - UIImage-ResizeMagick
   - Specta (0.2.1)
+  - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
   - Expecta
@@ -14,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  KikAPI: 9f8e6726bd0eb3554cf34b5f94f158299b53f686
+  KikAPI: 337a9f7cee634236d2702230e1a971a7bd78dbe3
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  UIImage-ResizeMagick: 6edd4b95aabf4be264bf99147aa27abb319f3c7f
 
 COCOAPODS: 0.32.1
