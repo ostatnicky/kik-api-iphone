@@ -51,6 +51,11 @@
 
 #pragma mark - Private Methods
 
+/**
+ *  Attempts to open the generated KikAPI URL if possible, AppStore modal otherwise.
+ *
+ *  @param url - the KikAPI URL to open
+ */
 - (void)openKikURL:(NSURL *)url
 {
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
@@ -60,6 +65,9 @@
     }
 }
 
+/**
+ *  Presents Kik in an in-app modal AppStore controller
+ */
 - (void)showKikInAppStore
 {
     SKStoreProductViewController *storeVC = [[SKStoreProductViewController alloc] init];

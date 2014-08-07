@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Kik Interactive. All rights reserved.
 //
 
-#define KIK_MESSENGER_API_SEND_URL          @"kik-share://kik.com/send/"
-#define KIK_MESSENGER_API_PREVIEW_WIDTH     400
-#define KIK_MESSENGER_API_MAXIMUM_EDGE_LENGTH 960
+#define KIK_MESSENGER_API_SEND_URL              @"kik-share://kik.com/send/"
+#define KIK_MESSENGER_API_PREVIEW_MAX_SIZE      @"400x400"
+#define KIK_MESSENGER_API_IMAGE_MAX_SIZE        @"960x960"
+
 #import <UIKit/UIKit.h>
 #import "KikMessage.h"
 #import "NSString+URLEncoding.h"
@@ -156,8 +157,8 @@
         return nil;
     }
     
-    UIImage *previewImage = [image resizedImageByMagick:@"400x400"];
-    UIImage *contentImage = [image resizedImageByMagick:@"960x960"];
+    UIImage *previewImage = [image resizedImageByMagick:KIK_MESSENGER_API_PREVIEW_MAX_SIZE];
+    UIImage *contentImage = [image resizedImageByMagick:KIK_MESSENGER_API_IMAGE_MAX_SIZE];
     
     self = [self initWithImageURL:[contentImage base64URI]
                        previewURL:[previewImage base64URI]];
@@ -268,7 +269,7 @@
             appIcon = [UIImage imageNamed:@"app_store_icon"];
         }
         
-        
+        // Resize it to 32x32
         appIcon = [appIcon resizedImageByMagick:@"32x32"];
         
         _iconURL = [appIcon base64URI];
@@ -277,4 +278,5 @@
     
     return _iconURL;
 }
+
 @end
