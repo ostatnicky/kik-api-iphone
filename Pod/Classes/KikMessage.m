@@ -127,6 +127,7 @@
         _title = title;
         _text = text;
         _previewURL = previewURL;
+        _forwardable = YES;
         _URLs = [NSMutableArray arrayWithObject:@{@"value": contentURL}];
     }
     
@@ -144,6 +145,7 @@
         _type = KikMessageTypePhoto;
         _imageURL = imageURL;
         _previewURL = previewURL;
+        _forwardable = YES;
         _URLs = [NSMutableArray array];
         
     }
