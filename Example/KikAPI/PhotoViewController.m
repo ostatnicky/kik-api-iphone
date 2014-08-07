@@ -46,6 +46,11 @@
     [sheet showInView:self.view];
 }
 
+- (IBAction)sendButtonTouched:(id)sender
+{
+    
+}
+
 #pragma mark - Actionsheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {

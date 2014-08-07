@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pictureImageView;
 
 - (IBAction)pictureButtonTouched:(id)sender;
+- (IBAction)sendButtonTouched:(id)sender;
 
 @end

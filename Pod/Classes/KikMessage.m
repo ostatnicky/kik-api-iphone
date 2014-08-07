@@ -21,6 +21,8 @@
 - (id)initWithImageURL:(NSString *)imageURL
             previewURL:(NSString *)previewURL;
 
+- (id)initWithImage:(UIImage *)image;
+
 @property (nonatomic, strong) NSString *appName;
 @property (nonatomic, strong) NSString *appPackage;
 @property (nonatomic, strong) NSString *iconURL;
@@ -137,6 +139,17 @@
     }
     
     return self;
+}
+
+- (id)initWithImage:(UIImage *)image
+{
+    if (!image) {
+        return nil;
+    }
+    
+    if (self = [super init]) {
+        
+    }
 }
 
 - (NSString *)linkRepresentation

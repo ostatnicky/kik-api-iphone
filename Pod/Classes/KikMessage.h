@@ -43,6 +43,8 @@ typedef enum {
 + (KikMessage *)photoMessageWithImageURL:(NSString *)imageURL
                               previewURL:(NSString *)previewURL;
 
++ (KikMessage *)photoMessageWithImage:(UIImage *)image;
+
 - (void)addFallbackURL:(NSString *)fallbackURL
            forPlatform:(KikMessagePlatform)platform;
 

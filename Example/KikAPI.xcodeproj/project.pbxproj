@@ -30,6 +30,7 @@
 		92F533621992CA1E00F0CAF9 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533611992CA1E00F0CAF9 /* ArticleViewController.m */; };
 		92F533651992CA3200F0CAF9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533641992CA3200F0CAF9 /* PhotoViewController.m */; };
 		92F533681992EA7B00F0CAF9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */; };
+		92F5336A1992F78C00F0CAF9 /* app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F533691992F78C00F0CAF9 /* app_icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		92F533631992CA3200F0CAF9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		92F533641992CA3200F0CAF9 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		92F533691992F78C00F0CAF9 /* app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app_icon@2x.png"; path = "Resources/app_icon@2x.png"; sourceTree = "<group>"; };
 		A8CD0DC49026472FBC34CAC9 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = "<group>"; };
 		C9B90516AFC04D6BB75C70D2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		EEE5CE931C7D43BDBCEAC281 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +208,7 @@
 		92F533571992C5F600F0CAF9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92F533691992F78C00F0CAF9 /* app_icon@2x.png */,
 				92F533581992C69600F0CAF9 /* registration_bg.png */,
 				92F533591992C69600F0CAF9 /* registration_bg@2x.png */,
 				92F5335A1992C69600F0CAF9 /* registration_logo.png */,
@@ -300,6 +303,7 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				92F5335D1992C69700F0CAF9 /* registration_bg@2x.png in Resources */,
+				92F5336A1992F78C00F0CAF9 /* app_icon@2x.png in Resources */,
 				92F5335E1992C69700F0CAF9 /* registration_logo.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -469,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -518,6 +522,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KikAPI/KikAPI-Prefix.pch";
 				INFOPLIST_FILE = "KikAPI/KikAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -533,6 +538,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KikAPI/KikAPI-Prefix.pch";
 				INFOPLIST_FILE = "KikAPI/KikAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
