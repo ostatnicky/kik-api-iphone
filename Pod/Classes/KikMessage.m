@@ -170,29 +170,29 @@
 
 - (NSString *)linkRepresentation
 {
-    NSString *link = KIK_MESSENGER_API_SEND_URL;
+    NSMutableString *link = [NSMutableString stringWithString:KIK_MESSENGER_API_SEND_URL];
     
     if (self.type == KikMessageTypeArticle) {
-        link = [link stringByAppendingString:@"article?"];
+        [link appendString:@"article?"];
     } else {
-        link = [link stringByAppendingString:@"photo?"];
+        [link appendString:@"photo?"];
     }
     
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"app_name=%@", [self.appName urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"&app_pkg=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    [link appendString:[NSString stringWithFormat:@"app_name=%@", [self.appName urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    [link appendString:[NSString stringWithFormat:@"&app_pkg=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     
     if (self.title.length) {
-        link = [link stringByAppendingString:[NSString stringWithFormat:@"&title=%@", [self.title urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+        [link appendString:[NSString stringWithFormat:@"&title=%@", [self.title urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
     if (self.text.length) {
-        link = [link stringByAppendingString:[NSString stringWithFormat:@"&text=%@", [self.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+        [link appendString:[NSString stringWithFormat:@"&text=%@", [self.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
     if (self.forwardable) {
-        link = [link stringByAppendingString:@"&forwardable=1"];
+        [link appendString:@"&forwardable=1"];
     } else {
-        link = [link stringByAppendingString:@"&forwardable=0"];
+        [link appendString:@"&forwardable=0"];
     }
     
     for (NSDictionary *uri in self.URLs) {
@@ -200,35 +200,27 @@
         NSString *value = [uri[@"value"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
         
         if (platform.length) {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&url=%@,%@", platform, value]];
+            [link appendString:[NSString stringWithFormat:@"&url=%@,%@", platform, value]];
         } else {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&url=%@", value]];
+            [link appendString:[NSString stringWithFormat:@"&url=%@", value]];
         }
     }
     
     if (self.imageURL.length) {
-        if ([self.imageURL hasPrefix:@"data:"]) {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&image_url=%@", self.imageURL]];
-        } else {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&image_url=%@",
-                                                  [self.imageURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-        }
+        [link appendString:[NSString stringWithFormat:@"&image_url=%@",
+                            [self.imageURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
     if (self.previewURL.length) {
-        if ([self.previewURL hasPrefix:@"data:"]) {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&preview_url=%@", self.previewURL]];
-        } else {
-            link = [link stringByAppendingString:[NSString stringWithFormat:@"&preview_url=%@",
-                                                  [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-        }
+        [link appendString:[NSString stringWithFormat:@"&preview_url=%@",
+                            [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
     
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"&icon_url=%@", self.iconURL]];
+    [link appendString:[NSString stringWithFormat:@"&icon_url=%@", [self.iconURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     
-    link = [link stringByAppendingString:@"&native=1"];
+    [link appendString:@"&native=1"];
     
-    link = [link stringByAppendingString:[NSString stringWithFormat:@"&referer=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    [link appendString:[NSString stringWithFormat:@"&referer=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     
     return link;
 }
