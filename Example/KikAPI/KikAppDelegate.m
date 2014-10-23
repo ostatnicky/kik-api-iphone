@@ -15,15 +15,6 @@
     // Override point for customization after application launch.
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18],
-                                                           }];
-
-    
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                           NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18],
-                                                           } forState:UIControlStateNormal];
-    
     return YES;
 }
 							
