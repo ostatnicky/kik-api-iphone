@@ -23,10 +23,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* KikMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* KikMessageTests.m */; };
 		646D3415E663427D8C9EA390 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE5CE931C7D43BDBCEAC281 /* libPods-Tests.a */; };
-		92F5335C1992C69700F0CAF9 /* registration_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F533581992C69600F0CAF9 /* registration_bg.png */; };
-		92F5335D1992C69700F0CAF9 /* registration_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F533591992C69600F0CAF9 /* registration_bg@2x.png */; };
-		92F5335E1992C69700F0CAF9 /* registration_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F5335A1992C69600F0CAF9 /* registration_logo.png */; };
-		92F5335F1992C69700F0CAF9 /* registration_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */; };
 		92F533621992CA1E00F0CAF9 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533611992CA1E00F0CAF9 /* ArticleViewController.m */; };
 		92F533651992CA3200F0CAF9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F533641992CA3200F0CAF9 /* PhotoViewController.m */; };
 		92F533681992EA7B00F0CAF9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F533671992EA7B00F0CAF9 /* MobileCoreServices.framework */; };
@@ -66,10 +62,6 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* KikMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KikMessageTests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		92F533581992C69600F0CAF9 /* registration_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = registration_bg.png; path = Resources/registration_bg.png; sourceTree = "<group>"; };
-		92F533591992C69600F0CAF9 /* registration_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "registration_bg@2x.png"; path = "Resources/registration_bg@2x.png"; sourceTree = "<group>"; };
-		92F5335A1992C69600F0CAF9 /* registration_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = registration_logo.png; path = Resources/registration_logo.png; sourceTree = "<group>"; };
-		92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "registration_logo@2x.png"; path = "Resources/registration_logo@2x.png"; sourceTree = "<group>"; };
 		92F533601992CA1E00F0CAF9 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
 		92F533611992CA1E00F0CAF9 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
 		92F533631992CA3200F0CAF9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
@@ -209,10 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				92F533691992F78C00F0CAF9 /* app_icon@2x.png */,
-				92F533581992C69600F0CAF9 /* registration_bg.png */,
-				92F533591992C69600F0CAF9 /* registration_bg@2x.png */,
-				92F5335A1992C69600F0CAF9 /* registration_logo.png */,
-				92F5335B1992C69600F0CAF9 /* registration_logo@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -298,13 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92F5335F1992C69700F0CAF9 /* registration_logo@2x.png in Resources */,
-				92F5335C1992C69700F0CAF9 /* registration_bg.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
-				92F5335D1992C69700F0CAF9 /* registration_bg@2x.png in Resources */,
 				92F5336A1992F78C00F0CAF9 /* app_icon@2x.png in Resources */,
-				92F5335E1992C69700F0CAF9 /* registration_logo.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

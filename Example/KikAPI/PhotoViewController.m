@@ -28,11 +28,11 @@
     self.title = @"Photo";
     
     self.sendButton.layer.borderWidth = 0.5f;
-    self.sendButton.layer.borderColor = [[UIColor greenColor] CGColor];
+    self.sendButton.layer.borderColor = [self.sendButton.tintColor CGColor];
     self.sendButton.layer.cornerRadius = 6.0f;
     
     self.pictureButton.layer.borderWidth = 0.5f;
-    self.pictureButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.pictureButton.layer.borderColor = [self.pictureButton.tintColor CGColor];
     self.pictureButton.layer.cornerRadius = 6.0f;
     
 }

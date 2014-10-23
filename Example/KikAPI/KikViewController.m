@@ -16,57 +16,38 @@
 
 @implementation KikViewController
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
 - (void)viewDidLoad
 {
-    [super viewDidLoad];    
-	// Do any additional setup after loading the view, typically from a nib.
-
+    [super viewDidLoad];
+    
+    self.title = @"API Demo";
     
     self.profileButton.layer.borderWidth = 0.5f;
-    self.profileButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.profileButton.layer.borderColor = [self.profileButton.tintColor CGColor];
     self.profileButton.layer.cornerRadius = 6.0f;
     
     self.articleMessageButton.layer.borderWidth = 0.5f;
-    self.articleMessageButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.articleMessageButton.layer.borderColor = [self.articleMessageButton.tintColor CGColor];
     self.articleMessageButton.layer.cornerRadius = 6.0f;
     
     self.photoMessageButton.layer.borderWidth = 0.5f;
-    self.photoMessageButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.photoMessageButton.layer.borderColor = [self.photoMessageButton.tintColor CGColor];
     self.photoMessageButton.layer.cornerRadius = 6.0f;
     
     self.backButton.layer.borderWidth = 0.5f;
-    self.backButton.layer.borderColor = [[UIColor greenColor] CGColor];
+    self.backButton.layer.borderColor = [self.backButton.tintColor CGColor];
     self.backButton.layer.cornerRadius = 6.0f;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    self.navigationController.navigationBar.alpha = 1.0f;
     [super viewWillAppear:animated];
-
-    [UIView animateWithDuration:0.3 animations:^{
-        self.navigationController.navigationBar.alpha = 0.0f;
-    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    self.navigationController.navigationBar.alpha = 0.0f;
-
     [super viewWillDisappear:animated];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.navigationController.navigationBar.alpha = 1.0f;
-    }];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,8 +57,8 @@
 
 - (IBAction)profileButtonTouched:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Kik Profile"
-                                                        message:@"Enter a username"
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Open Profile"
+                                                        message:@"Enter a Kik Username"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Open", nil];

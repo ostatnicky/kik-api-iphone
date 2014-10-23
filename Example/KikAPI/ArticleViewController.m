@@ -18,11 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.title = @"Article";
     
     self.sendButton.layer.borderWidth = 0.5f;
-    self.sendButton.layer.borderColor = [[UIColor greenColor] CGColor];
+    self.sendButton.layer.borderColor = [self.sendButton.tintColor CGColor];
     self.sendButton.layer.cornerRadius = 6.0f;
 }
 
