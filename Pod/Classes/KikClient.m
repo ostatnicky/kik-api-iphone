@@ -26,7 +26,10 @@
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[KikClient alloc] init];
-        _sharedInstance.rootController = [UIApplication sharedApplication].keyWindow.rootViewController;
+        
+        UIWindow *window = [[UIApplication sharedApplication].windows firstObject];
+        
+        _sharedInstance.rootController = window.rootViewController;
     });
     return _sharedInstance;
 }
