@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "1.0.0"
   s.summary          = "Native API for interacting with the Kik Messenger client."
   s.homepage         = "https://github.com/kikinteractive/kik-api-iphone"
-  s.license          = 'MIT'
+  s.license          = 'Apache2'
   s.author           = { "Kik Interactive" => "dev@kik.com" }
   s.source           = { :git => "https://github.com/kikinteractive/kik-api-iphone.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/kik'
