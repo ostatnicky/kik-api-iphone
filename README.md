@@ -115,7 +115,7 @@ To run the example project, clone the repo, and run `pod install` from the "Exam
 
 ## Author
 
-Kik Interactive, dev@kik.com
+Kik Interactive, Inc.
 
 ## License
 
