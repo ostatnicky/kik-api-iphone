@@ -79,7 +79,7 @@ message.forwardable = NO;
 
 With any content message, you can specify fallback URLs. When the user opens your content message, Kik will check your fallback URLs to see which URL is supported on the current platform and display a link to the user which will allow them to navigate to that URL.
 
-A fallback URL can be any type of URL whether it is a link to a website (ie. `http://kik.com`) or a speciailized scheme for a native app (ie. `kik://users/kikteam/profile`).
+A fallback URL can be any type of URL whether it is a link to a website (ie. `http://kik.com`) or a specialized scheme for a native app (ie. `kik://users/kikteam/profile`).
 
 If your app supports both Android and iOS, you can add a link to the native scheme which would open your app on each respective platform. Also, if your app is not installed, Kik will detect that your native scheme is not handled. If this is the case, the next fallback URL in order will be presented to the user. This is an opportunity to add another fallback URL linking to the AppStore with an ITMS link or the Google Play Store with a web link.
 
