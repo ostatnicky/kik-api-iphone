@@ -9,7 +9,7 @@ The Kik API library for iOS supports iOS versions >= 6.0.
 You can install the Kik API using [CocoaPods](http://cocoapods.org). To include the library,
 simply add the following line to the Podfile in your project:
 
-    pod "KikAPI"
+    pod "KikAPI", '~> 1.1.0-beta1'
 
 ## Usage
 
@@ -64,6 +64,50 @@ UIImage *image = [UIImage imageNamed:@"image.png"];
 KikMessage *message = [KikMessage photoMessageWithImage:image];
 ```
 
+#### Video
+
+```objective-c
+// Create a video message using URLs
+KikMessage *message = [KikMessage videoMessageWithVideoURL:@"http://www.videos.com/video.mp4"
+                                                previewURL:@"http://www.videos.com/video_preview.png"];
+
+[[KikClient sharedInstance] sendKikMessage:message];
+```
+
+Video files should be encoded using H.264 with baseline profile for video and AAC for audio. The container should be mp4. Video files must be no larger than 15mb and no longer than 2 minutes in duration. The provided preview image should match the first frame of the video and have the same aspect ratio as the video.
+
+If a video is marked to autoplay using the `videoShouldAutoplay` property, it must be no larger than 1mb. Developers are encouraged to test that their video content plays back reliably on a range of iOS and Android devices. 
+
+Alternatively, you can specify an `NSData` object containing the video data to send. In this case, the data will be uploaded to and hosted on the Kik servers.
+
+```objective-c
+// Create a video message from an NSData object
+NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"video"
+													  ofType:@"mp4"]; 
+NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
+NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+KikMessage *message = [KikMessage videoMessageWithData:videoData];
+```
+
+##### Video Message Attributes
+
+###### Looping
+If the `videoShouldLoop` property is set to `YES`, the video will loop when played back. In other words, when playback reaches the end of the video it will start again at the beginning. The default value for `videoShouldLoop` is `NO`.
+
+###### Muted
+If the `videoShouldBeMuted` property is set to `YES`, the video will be played with the audio track muted. In the case that `videoShouldAutoplay` is set to `YES`, no unmute button will be shown. The default value for `videoShouldBeMuted` is `NO`.
+
+###### Autoplay
+If the `videoShouldAutoplay` property is set to `YES`, the video will start playing automatically when it appears in a chat. The video will be muted by default with an unmute button provided to the user. When the unmute button is tapped, playback will restart from the beginning of the video with audio enabled. If the `videoShouldBeMuted` property is set to `YES`, the unmute button will not be shown. If `videoShouldAutoplay` is set to `YES` the attached or linked video data must be less than 1mb. The default value for `videoShouldAutoplay` is `NO`.
+
+
+```objective-c
+...
+message.videoShouldLoop = YES;
+message.videoShouldAutoplay = YES;
+message.videoShouldBeMuted = YES;
+```
+
 ### Other Message Attributes
 
 #### Forwardable
@@ -73,6 +117,15 @@ If you do not want to allow a user to forward a particular content message on to
 ```objective-c
 ...
 message.forwardable = NO;
+```
+
+#### Disallow Saving
+
+If you do not want to allow a user to save a particular photo or video message you can set the `disallowSave` attribute on a `KikMessage` to `YES`. The default value for `disallowSave` is `NO`.
+
+```objective-c
+...
+message.disallowSave = YES;
 ```
 
 #### Fallback URLs

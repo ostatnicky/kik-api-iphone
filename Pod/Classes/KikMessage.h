@@ -10,7 +10,8 @@
 
 typedef enum {
     KikMessageTypeArticle = 0,
-    KikMessageTypePhoto
+    KikMessageTypePhoto,
+    KikMessageTypeVideo
 } KikMessageType;
 
 typedef enum {
@@ -49,6 +50,16 @@ typedef enum {
 @property (nonatomic, strong, readonly) NSString *imageURL;
 
 /**
+ *  The video URL that is associated with this KikMessage.
+ */
+@property (nonatomic, strong, readonly) NSString *videoURL;
+
+/**
+ *  The video Data that is associated with this KikMessage.
+ */
+@property (nonatomic, copy, readonly) NSData *videoData;
+
+/**
  *  The preview URL that is associated with this KikMessage. See above.
  */
 @property (nonatomic, strong, readonly) NSString *previewURL;
@@ -73,6 +84,26 @@ typedef enum {
  *  Determines whether or not this KikMessage is forwardable inside of Kik.
  */
 @property (nonatomic, assign) BOOL forwardable;
+
+/**
+ *  Determines whether or not this KikMessage will autoplay its video content inside of Kik.
+ */
+@property (nonatomic, assign) BOOL videoShouldAutoplay;
+
+/**
+ *  Determines whether or not this KikMessage's video content will be muted inside of Kik.
+ */
+@property (nonatomic, assign) BOOL videoShouldBeMuted;
+
+/**
+ *  Determines whether or not this KikMessage's video will restart upon completion inside of Kik.
+ */
+@property (nonatomic, assign) BOOL videoShouldLoop;
+
+/**
+ *  Determines whether or not this KikMessage's contents are allowed to be saved to the user's device.
+ */
+@property (nonatomic, assign) BOOL disallowSave;
 
 /**
  *  Convenience constructor to create an Article typed KikMessage.
@@ -108,6 +139,26 @@ typedef enum {
  *  @return The constructed KikMessage object, nil if any errors.
  */
 + (KikMessage *)photoMessageWithImage:(UIImage *)image;
+
+/**
+ *  Convenience constructor to create a Video typed KikMessage from URLs.
+ *
+ *  @param videoURL   URL of the video you wish to send. Can be a base64 encoded data URI. (Required)
+ *  @param previewURL URL of the preview image you wish to send. Can be a base64 encoded data URI. (Required)
+ *
+ *  @return The constructed KikMessage object, nil if any errors.
+ */
++ (KikMessage *)videoMessageWithVideoURL:(NSString *)videoURL
+                              previewURL:(NSString *)previewURL;
+
+/**
+ *  Convenience constructor to create a Video typed KikMessage from NSData.
+ *
+ *  @param data NSData of the video to send.
+ *
+ *  @return The constructed KikMessage object, nil if any errors.
+ */
++ (KikMessage *)videoMessageWithData:(NSData *)data;
 
 /**
  *  Adds a fallback URL to the receiving KikMessage
