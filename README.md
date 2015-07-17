@@ -9,7 +9,7 @@ The Kik API library for iOS supports iOS versions >= 6.0.
 You can install the Kik API using [CocoaPods](http://cocoapods.org). To include the library,
 simply add the following line to the Podfile in your project:
 
-    pod "KikAPI", '~> 1.1.0-beta1'
+    pod 'KikAPI', '~> 1.1.0-beta'
 
 ## Usage
 
