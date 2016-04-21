@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "KikAPI"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0-beta1"
   s.summary          = "Native API for interacting with the Kik Messenger client."
   s.homepage         = "https://github.com/kikinteractive/kik-api-iphone"
   s.license          = 'Apache2'

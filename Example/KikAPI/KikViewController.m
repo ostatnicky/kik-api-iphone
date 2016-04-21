@@ -10,6 +10,10 @@
 #import <KikAPI/KikAPI.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "ContentViewController.h"
+
+static NSString * const ContentCaptureSegueIdentifier = @"ContentCaptureSegueIdentifier";
+
 @interface KikViewController () <UIAlertViewDelegate>
 
 @end
@@ -19,6 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     self.title = @"API Demo";
     
@@ -33,6 +39,10 @@
     self.photoMessageButton.layer.borderWidth = 0.5f;
     self.photoMessageButton.layer.borderColor = [self.photoMessageButton.tintColor CGColor];
     self.photoMessageButton.layer.cornerRadius = 6.0f;
+    
+    self.videoMessageButton.layer.borderWidth = 0.5f;
+    self.videoMessageButton.layer.borderColor = [self.videoMessageButton.tintColor CGColor];
+    self.videoMessageButton.layer.cornerRadius = 6.0f;
     
     self.backButton.layer.borderWidth = 0.5f;
     self.backButton.layer.borderColor = [self.backButton.tintColor CGColor];
@@ -49,11 +59,7 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Action Responders
 
 - (IBAction)profileButtonTouched:(id)sender
 {
@@ -67,10 +73,22 @@
     [alertView show];
 }
 
+- (IBAction)imageButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:ContentCaptureSegueIdentifier sender:@"Image"];
+}
+
+- (IBAction)videoButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:ContentCaptureSegueIdentifier sender:@"Video"];
+}
+
 - (IBAction)backButtonTouched:(id)sender
 {
     [[KikClient sharedInstance] backToKik];
 }
+
+#pragma mark - <UIAlertViewDelegate>
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -82,4 +100,15 @@
         }
     }
 }
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ContentCaptureSegueIdentifier]) {
+        ContentViewController *contentVC = (ContentViewController *)segue.destinationViewController;
+        contentVC.isPhoto = [sender isEqualToString:@"Image"];
+    }
+}
+
 @end

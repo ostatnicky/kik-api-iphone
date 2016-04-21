@@ -61,11 +61,9 @@
  */
 - (void)openKikURL:(NSURL *)url
 {
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-    } else {
+    if (![[UIApplication sharedApplication] openURL:url]) {
         [self showKikInAppStore];
-    }
+    } 
 }
 
 /**

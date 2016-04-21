@@ -55,9 +55,21 @@
                                      previewURL:previewURL];
 }
 
++ (KikMessage *)videoMessageWithVideoURL:(NSString *)videoURL
+                              previewURL:(NSString *)previewURL
+{
+    return [[KikMessage alloc] initWithVideoURL:videoURL
+                                     previewURL:previewURL];
+}
+
 + (KikMessage *)photoMessageWithImage:(UIImage *)image
 {
     return [[KikMessage alloc] initWithImage:image];
+}
+
++ (KikMessage *)videoMessageWithData:(NSData *)data
+{
+    return [[KikMessage alloc] initWithVideoData:data];
 }
 
 - (void)addFallbackURL:(NSString *)fallbackURL
@@ -72,18 +84,22 @@
     NSString *stringPlatform;
     
     switch (platform) {
-        case KikMessagePlatformAndroid:
+        case KikMessagePlatformAndroid: {
             stringPlatform = @"android";
             break;
-        case KikMessagePlatformiPhone:
+        }
+        case KikMessagePlatformiPhone: {
             stringPlatform = @"iphone";
             break;
-        case KikMessagePlatformCards:
+        }
+        case KikMessagePlatformCards: {
             stringPlatform = @"cards";
             break;
-        default:
+        }
+        default: {
             stringPlatform = @"";
             break;
+        }
     }
     
     NSDictionary *uri;
@@ -147,9 +163,26 @@
         _previewURL = previewURL;
         _forwardable = YES;
         _URLs = [NSMutableArray array];
-        
     }
     
+    return self;
+}
+
+- (id)initWithVideoURL:(NSString *)videoURL
+            previewURL:(NSString *)previewURL
+{
+    if (![NSURL URLWithString:videoURL] || ![NSURL URLWithString:previewURL]) {
+        return nil;
+    }
+    
+    self = [super init];
+    if (self) {
+        _type = KikMessageTypeVideo;
+        _videoURL = videoURL;
+        _previewURL = previewURL;
+        _forwardable = YES;
+        _URLs = [NSMutableArray array];
+    }
     return self;
 }
 
@@ -168,32 +201,62 @@
     return self;
 }
 
+- (id)initWithVideoData:(NSData *)videoData
+{
+    self = [super init];
+    if (self) {
+        _type = KikMessageTypeVideo;
+        _videoData = videoData;
+        _forwardable = YES;
+        _URLs = [NSMutableArray array];
+    }
+    return self;
+}
+
+#pragma mark - Link Generation
+
 - (NSString *)linkRepresentation
 {
     NSMutableString *link = [NSMutableString stringWithString:KIK_MESSENGER_API_SEND_URL];
     
-    if (self.type == KikMessageTypeArticle) {
-        [link appendString:@"article?"];
-    } else {
-        [link appendString:@"photo?"];
+    switch (self.type) {
+        case KikMessageTypeArticle:
+        {
+            [link appendString:@"article?"];
+            [self appendCommonParametersToLink:link];
+            [self appendArticlePropertiesToLink:link];
+            break;
+        }
+        case KikMessageTypePhoto:
+        {
+            [link appendString:@"photo?"];
+            [self appendCommonParametersToLink:link];
+            [self appendImagePropertiesToLink:link];
+            break;
+        }
+        case KikMessageTypeVideo:
+        {
+            [link appendString:@"video?"];
+            [self appendCommonParametersToLink:link];
+            [self appendVideoPropertiesToLink:link];
+            break;
+        }
     }
     
-    [link appendString:[NSString stringWithFormat:@"app_name=%@", [self.appName urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    [link appendString:[NSString stringWithFormat:@"&app_pkg=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    return link;
+}
+
+- (void)appendCommonParametersToLink:(NSMutableString *)link
+{
+    [link appendFormat:@"app_name=%@", [self.appName urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+    [link appendFormat:@"&app_pkg=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]];
     
-    if (self.title.length) {
-        [link appendString:[NSString stringWithFormat:@"&title=%@", [self.title urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    }
+    [link appendFormat:@"&icon_url=%@", [self.iconURL urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+    [link appendString:@"&native=1"];
+    [link appendFormat:@"&referer=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]];
     
-    if (self.text.length) {
-        [link appendString:[NSString stringWithFormat:@"&text=%@", [self.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    }
-    
-    if (self.forwardable) {
-        [link appendString:@"&forwardable=1"];
-    } else {
-        [link appendString:@"&forwardable=0"];
-    }
+    [link appendFormat:@"&forwardable=%@", self.forwardable ? @"1" : @"0"];
+    [link appendFormat:@"&disallow_save=%@", self.disallowSave ? @"1" : @"0"];
     
     for (NSDictionary *uri in self.URLs) {
         NSString *platform = uri[@"platform"];
@@ -205,7 +268,26 @@
             [link appendString:[NSString stringWithFormat:@"&url=%@", value]];
         }
     }
+}
+
+- (void)appendArticlePropertiesToLink:(NSMutableString *)link
+{
+    if (self.title.length) {
+        [link appendString:[NSString stringWithFormat:@"&title=%@", [self.title urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    }
     
+    if (self.text.length) {
+        [link appendString:[NSString stringWithFormat:@"&text=%@", [self.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    }
+    
+    if (self.previewURL.length) {
+        [link appendString:[NSString stringWithFormat:@"&preview_url=%@",
+                            [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+    }
+}
+
+- (void)appendImagePropertiesToLink:(NSMutableString *)link
+{
     if (self.imageURL.length) {
         [link appendString:[NSString stringWithFormat:@"&image_url=%@",
                             [self.imageURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
@@ -215,15 +297,34 @@
         [link appendString:[NSString stringWithFormat:@"&preview_url=%@",
                             [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
     }
-    
-    [link appendString:[NSString stringWithFormat:@"&icon_url=%@", [self.iconURL urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    
-    [link appendString:@"&native=1"];
-    
-    [link appendString:[NSString stringWithFormat:@"&referer=%@", [self.appPackage urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-    
-    return link;
 }
+
+- (void)appendVideoPropertiesToLink:(NSMutableString *)link
+{
+    [link appendFormat:@"&video_should_autoplay=%@", self.videoShouldAutoplay ? @"1" : @"0"];
+    [link appendFormat:@"&video_should_be_muted=%@", self.videoShouldBeMuted ? @"1" : @"0"];
+    [link appendFormat:@"&video_should_loop=%@", self.videoShouldLoop ? @"1" : @"0"];
+    
+    
+    if (self.videoData) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setData:self.videoData.copy forPasteboardType:@"com.kik.chat.videoData"];
+        [link appendFormat:@"&video_data_available=1"];
+        return;
+    }
+    
+    if (self.videoURL.length) {
+        [link appendFormat:@"&video_url=%@",
+         [self.videoURL urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    if (self.previewURL.length) {
+        [link appendFormat:@"&preview_url=%@",
+         [self.previewURL urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+    }
+}
+
+#pragma mark - Getters
 
 - (NSString *)appName
 {

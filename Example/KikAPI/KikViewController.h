@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
 @property (weak, nonatomic) IBOutlet UIButton *articleMessageButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoMessageButton;
+@property (weak, nonatomic) IBOutlet UIButton *videoMessageButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 - (IBAction)profileButtonTouched:(id)sender;

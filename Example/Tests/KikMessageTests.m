@@ -15,7 +15,8 @@ describe(@"article send", ^{
     it(@"can make an article with just a title", ^{
         KikMessage *message = [KikMessage articleMessageWithTitle:@"Some Title"
                                                              text:nil
-                                                       contentURL:@"http://kik.com"];
+                                                       contentURL:@"http://kik.com"
+                                                       previewURL:@"http://i.imgur.com/v753u3H.jpg"];
         
         expect(message).toNot.beNil();
     });
@@ -23,7 +24,8 @@ describe(@"article send", ^{
     it(@"can make an article with just text", ^{
         KikMessage *message = [KikMessage articleMessageWithTitle:nil
                                                              text:@"Some Text"
-                                                       contentURL:@"http://kik.com"];
+                                                       contentURL:@"http://kik.com"
+                                                       previewURL:@"http://i.imgur.com/v753u3H.jpg"];
         
         expect(message).toNot.beNil();
     });
@@ -31,7 +33,8 @@ describe(@"article send", ^{
     it (@"can't make an article without a content URL", ^{
         KikMessage *message = [KikMessage articleMessageWithTitle:@"Some Title"
                                                              text:@"Some Text"
-                                                       contentURL:nil];
+                                                       contentURL:nil
+                                                       previewURL:@"http://i.imgur.com/v753u3H.jpg"];
         
         expect(message).to.beNil();
     });
@@ -39,7 +42,8 @@ describe(@"article send", ^{
     it (@"can add a fallback urls", ^{
         KikMessage *message = [KikMessage articleMessageWithTitle:@"Some Title"
                                                              text:@"Some Text"
-                                                       contentURL:@"http://kik.com"];
+                                                       contentURL:@"http://kik.com"
+                                                       previewURL:@"http://i.imgur.com/v753u3H.jpg"];
         
         expect(message.URLs.count).to.equal(1);
         
@@ -90,4 +94,28 @@ describe(@"photo send", ^{
     
 });
 
+describe(@"Video send", ^{
+    
+    it(@"Can create video message with URLS", ^{
+        KikMessage *message = [KikMessage videoMessageWithVideoURL:@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+                                                        previewURL:@"http://i.imgur.com/v753u3H.jpg"];
+        
+        expect(message).toNot.beNil();
+    });
+    
+    it(@"Can't create video message without a video URL", ^{
+        KikMessage *message = [KikMessage videoMessageWithVideoURL:nil
+                                                        previewURL:@"http://i.imgur.com/v753u3H.jpg"];
+        
+        expect(message).to.beNil();
+    });
+    
+    it(@"Can't create video message without a preview URL", ^{
+        KikMessage *message = [KikMessage videoMessageWithVideoURL:@"http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+                                                        previewURL:nil];
+        
+        expect(message).to.beNil();
+    });
+    
+});
 SpecEnd
