@@ -130,7 +130,8 @@
         return nil;
     }
     
-    if (contentURL.length && ![NSURL URLWithString:previewURL]) {
+    if (contentURL.length &&
+        (previewURL.length && ![NSURL URLWithString:previewURL])) {
         return nil;
     }
     
