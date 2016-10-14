@@ -331,6 +331,9 @@
 {
     if (!_appName) {
         _appName = [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+        if (!_appName) {
+            _appName = [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
+        }
     }
     
     return _appName;
